@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<div class="centered">
+    <!-- <button type="submit">press to re-generate connectors</button> -->
+    <h1 style="text-align:center">SIX DEGREES OF WORD</h1>
+    <br>
+    <div style="text-align:center">
+        <a href="{{ url_for('index') }}"><button>REFRESH WORDS</button></a>
+    </div>
+    <br>
+    <div style="text-align:center">
+        <p>You did... Great? Not so great? I'm not sure.<br>Maybe will change this to dynamic text eventually.</p>
+    </div>
+    <br>
+    <p><span style="border-width:0.5px; border-style:solid; white-space: nowrap; border-radius: 3px; padding: 4px;">Overall Score: {{ output_ovr_string }}</span><p>
+    <br>
+    <p><strong>{{ prompt_words[0] }}&nbsp</strong> 
+    <br>
+    <div class="vl"></div>
+    <br><br>
+    <span style="border-width:0.5px; border-style:solid; white-space: nowrap; border-radius: 3px; padding: 2px;"> {{ input_string[0] }}:{{ input_scores[0] }}</span> 
+    <br><br>
+    <div class="vl"></div>
+<!--     <br><br> -->
+<!--     <strong>&nbsp&nbsp{{ prompt_words[1] }}&nbsp</strong>  -->
+<!--     <br><br> -->
+    <div class="vl"></div>
+    <br><br>
+    <span style="border-width:0.5px; border-style:solid; white-space: nowrap; border-radius: 3px; padding: 2px;"> {{ input_string[1] }}:{{ input_scores[1]}} </span> 
+    <br><br>
+    <div class="vl"></div>
+<!--     <br><br> -->
+<!--     <strong>&nbsp&nbsp{{ prompt_words[2] }}&nbsp</strong>  -->
+<!--     <br><br> -->
+    <div class="vl"></div>
+    <br><br>
+    <span style="border-width:0.5px; border-style:solid; white-space: nowrap; border-radius: 3px; padding: 2px;"> {{ input_string[2] }}:{{ input_scores[2] }}</span> 
+    <br><br>
+    <div class="vl"></div>
+<!--     <br><br> -->
+<!--     <strong>&nbsp&nbsp{{ prompt_words[3] }}&nbsp</strong>  -->
+<!--     <br><br> -->
+    <div class="vl"></div>
+    <br><br>
+    <span style="border-width:0.5px; border-style:solid; white-space: nowrap; border-radius: 3px; padding: 2px;"> {{ input_string[3] }}:{{ input_scores[3] }}</span> 
+    <br><br>
+    <div class="vl"></div>
+    <br><br>
+    <strong>&nbsp&nbsp{{ prompt_words[1] }}</strong><p>
+<div>
+{% endblock %}
