@@ -10,6 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import CloseIcon from "@mui/icons-material/Close";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useEffect, useState } from "react";
 
@@ -46,7 +47,7 @@ const CurrentGuess = ({
   const guessNumber = guesses.length + 1;
 
   const handleKeyUp = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && guessText.length > 0) {
       processGuess(
         guessText,
         setGuessText,
@@ -177,6 +178,7 @@ function App() {
   }, []);
 
   const allowGuess = guesses.length < maxGuesses && !won;
+  const lost = guesses.length === maxGuesses && !won;
 
   return (
     <div className="App">
@@ -200,7 +202,7 @@ function App() {
               {guesses.map((guess, i) => (
                 <div key={`guess${i + 1}`}>
                   <PreviousGuess guess={guess} bottomWord={bottomWord} />
-                  <ArrowDownwardIcon />
+                  {allowGuess ? <ArrowDownwardIcon /> : ""}
                 </div>
               ))}
               {allowGuess ? (
@@ -219,7 +221,7 @@ function App() {
                 ""
               )}
             </Box>
-            {won ? "" : <ArrowDownwardIcon />}
+            {lost ? <CloseIcon /> : <ArrowDownwardIcon />}
             <Word>{bottomWord ? bottomWord : "Loading..."}</Word>
 
             {allowGuess ? (
@@ -253,6 +255,14 @@ function App() {
               <Alert severity="success">
                 <AlertTitle>Success</AlertTitle>
                 You won!
+              </Alert>
+            ) : (
+              ""
+            )}
+            {lost ? (
+              <Alert severity="error">
+                <AlertTitle>Failure</AlertTitle>
+                You lost :(
               </Alert>
             ) : (
               ""
